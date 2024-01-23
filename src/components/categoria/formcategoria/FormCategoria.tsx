@@ -2,8 +2,11 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Categoria from "../../../models/Categoria"
 import { useNavigate, useParams } from "react-router-dom";
 import { atualizar, cadastrar, listar } from "../../../services/Services";
+import { RotatingLines } from "react-loader-spinner";
 
 function FormCategoria() {
+
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const navigate = useNavigate();
 
@@ -34,6 +37,7 @@ function FormCategoria() {
 
     async function gerarNovaCategoria(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
+        setIsLoading(true)
 
         if (id !== undefined) {
             try {
@@ -51,6 +55,7 @@ function FormCategoria() {
 
             }
         }
+        setIsLoading(false)
         retornar()
     }
 
@@ -75,10 +80,19 @@ function FormCategoria() {
                     />
                 </div>
                 <button
-                    className="rounded text-slate-100 bg-slate-600 hover:bg-violet-800 w-1/2 py-2 mx-auto block"
-                    type="submit"
-                >
-                    <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+                    className="rounded text-slate-100 bg-slate-600 hover:bg-violet-800 w-1/2 py-2 mx-auto flex justify-center"
+                    type="submit">
+                    {isLoading ?
+                        <RotatingLines
+                        strokeColor="white"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="24"
+                        visible={true}
+                        />
+                        :
+                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+                    }
                 </button>
             </form>
         </div>
