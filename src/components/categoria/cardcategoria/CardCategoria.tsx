@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 import Categoria from "../../../models/Categoria"
 
-interface CardCategoriaProps{
+interface CardCategoriaProps {
     categoria: Categoria
 }
 
@@ -10,17 +11,17 @@ function CardCategoria({ categoria }: CardCategoriaProps) {
             <header className='py-2 px-6 bg-violet-600 text-white font-bold text-2xl'>
                 Categoria
             </header>
-            <p className='p-6 text-2xl bg-slate-100 h-full font-semibold'>{categoria.tipo}</p>
+            <p className='p-6 text-2xl bg-slate-800 text-white h-full font-semibold'>{categoria.tipo}</p>
 
             <div className="flex bg-slate-500 justify-center font-semibold">
-                <div className="flex justify-center text-violet-600 bg-white border-white border-solid px-4 py-2 hover:bg-violet-600  hover:text-white w-full">
+                <Link to={`/editarcategoria/${categoria.id}`} className="flex justify-center text-violet-600 bg-white border-white border-solid px-4 py-2 hover:bg-violet-700 hover:text-white w-full">
                     <button>Editar</button>
-                </div>
+                </Link>
 
-                <div className="rounded text-white border-white border-solid px-4 py-2 hover:bg-violet-600
+                <Link to={`/deletarcategoria/${categoria.id}`} className="rounded text-white border-white border-solid px-4 py-2 hover:bg-violet-700
          w-full flex justify-center">
                     <button>Deletar</button>
-                </div>
+                </Link>
             </div>
         </div>
     )

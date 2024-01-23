@@ -56,7 +56,7 @@ function FormCategoria() {
 
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto">
+        <div className="container flex flex-col items-center justify-center mx-auto font-semibold">
             <h1 className="text-4xl text-center my-8">
                 {id === undefined ? 'Cadastrar Categoria' : 'Atualizar Categoria'}
             </h1>
@@ -75,7 +75,7 @@ function FormCategoria() {
                     />
                 </div>
                 <button
-                    className="rounded text-slate-100 bg-indigo-400 hover:bg-indigo-800 w-1/2 py-2 mx-auto block"
+                    className="rounded text-slate-100 bg-slate-600 hover:bg-violet-800 w-1/2 py-2 mx-auto block"
                     type="submit"
                 >
                     <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
